@@ -2,9 +2,11 @@ import express from 'express';
 // import {configDotenv} from "dotenv"
 // configDotenv();
 import "dotenv/config" 
+import cors from "cors";
 import bodyparser from "body-parser";
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 //configurar el uso de body-parser
@@ -19,7 +21,9 @@ app.get("/", (_, res) => {
 //otro endopint, funcione de flecha
 app.get("/productos", (req,res) => {
   //usando templates strings
-  res.send(`<h1>listado de productos</h1>
+  const orden = req.query.orden || "sin orden";
+  const pagina = req.query.pagina || 1;
+  res.send(`<h1>listado de productos en orde ${orden}, en la página ${pagina}</h1>
     <ol>
       <li>televisor</li>
       <li>celular</li>
@@ -42,6 +46,7 @@ app.get("/saludo/:nombre", (req,res) => {
   res.send(`Hola, ${nombre} bienvenido`);
 })
 
+//2
 app.get("/producto/:nombres", (req,res) => {
     const producto = req.params.nombres
     res.json({
@@ -53,17 +58,15 @@ app.get("/producto/:nombres", (req,res) => {
     });
 })
 
+//3
 app.get("/productos/:categoria/:id", (req,res) => {
     const {categoria, id} = req.params;
     res.json({
           categoria,     
           producto: id,
-          servidor: "NodeJS de Express"  
+          servidor: "Express"  
   })
 })
-
-
-
 
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
