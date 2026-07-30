@@ -27,6 +27,24 @@ app.get("/productos", (req,res) => {
     </ol>`);
 });
 
+app.get("/productos/:nombres", (req,res) => {
+    const producto = req.params.nombres
+    res.send(`El prodcuto es ${producto}`);
+})
+
+//1. nombres
+app.get("/saludo/:nombre", (req,res) => {
+  const {nombre} = req.params;
+   if (nombre.length < 3) {
+    return res.status(400).json({
+      error: "El nombre debe tener al menos 3 caracteres"});
+  }
+  res.send(`Hola, ${nombre} bienvenido`);
+})
+
+
+
+
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
 });
