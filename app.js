@@ -53,6 +53,18 @@ app.get("/producto/:nombres", (req,res) => {
     });
 })
 
+app.get("/productos/:categoria/:id", (req,res) => {
+    const {categoria, id} = req.params;
+    res.json({
+          categoria,     
+          producto: id,
+          servidor: "NodeJS de Express"  
+  })
+})
+
+
+
+
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
 });
