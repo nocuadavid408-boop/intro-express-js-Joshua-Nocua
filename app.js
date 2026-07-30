@@ -29,7 +29,7 @@ app.get("/productos", (req,res) => {
 
 app.get("/productos/:nombres", (req,res) => {
     const producto = req.params.nombres
-    res.send(`El prodcuto es ${producto}`);
+    res.send(`El producto es ${producto}`);
 })
 
 //1. nombres
@@ -42,8 +42,16 @@ app.get("/saludo/:nombre", (req,res) => {
   res.send(`Hola, ${nombre} bienvenido`);
 })
 
-
-
+app.get("/producto/:nombres", (req,res) => {
+    const producto = req.params.nombres
+    res.json({
+        id: 1,
+        nombre: producto,
+        categoria:"Electrónica",
+        stock: 10,
+        precio: 500
+    });
+})
 
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
