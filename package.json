@@ -1,31 +1,17 @@
 {
   "name": "intro-express-js-joshua-nocua",
   "version": "1.0.0",
-  "description": "Introduccion a express con la ficha 3407184 del tecnologo ADSO",
-  "keywords": [],
-  "homepage": "https://github.com/nocuadavid408-boop/intro-express-js-Joshua-Nocua#readme",
-  "bugs": {
-    "url": "https://github.com/nocuadavid408-boop/intro-express-js-Joshua-Nocua/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nocuadavid408-boop/intro-express-js-Joshua-Nocua.git"
-  },
-  "license": "ISC",
-  "author": "Joshua Nocua",
-  "type": "module",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "node --watch app.js",
-<<<<<<< HEAD
-=======
-    "produccion": "node app.js",
->>>>>>> origin/main
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
     "express": "^5.2.1"
   }
 }
