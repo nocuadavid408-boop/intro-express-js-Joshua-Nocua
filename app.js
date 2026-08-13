@@ -6,68 +6,10 @@ import cors from "cors";
 import bodyparser from "body-parser";
 
 const app = express();
-app.use(cors());
-const port = process.env.PORT || 3000;
-
-//configurar el uso de body-parser
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-
-
+const port = 3000;
 app.get("/", (_, res) => {
-  res.send(`Hola , estamos aprendiendo express con la ficha 3407184`);
+  res.send("Hola , estamos aprendiendo express con la ficha 3407184");
 });
-
-//otro endopint, funcione de flecha
-app.get("/productos", (req,res) => {
-  //usando templates strings
-  const orden = req.query.orden || "sin orden";
-  const pagina = req.query.pagina || 1;
-  res.send(`<h1>listado de productos en orde ${orden}, en la página ${pagina}</h1>
-    <ol>
-      <li>televisor</li>
-      <li>celular</li>
-      <li>impresora</li>
-    </ol>`);
-});
-
-app.get("/productos/:nombres", (req,res) => {
-    const producto = req.params.nombres
-    res.send(`El producto es ${producto}`);
-})
-
-//1. nombres
-app.get("/saludo/:nombre", (req,res) => {
-  const {nombre} = req.params;
-   if (nombre.length < 3) {
-    return res.status(400).json({
-      error: "El nombre debe tener al menos 3 caracteres"});
-  }
-  res.send(`Hola, ${nombre} bienvenido`);
-})
-
-//2
-app.get("/producto/:nombres", (req,res) => {
-    const producto = req.params.nombres
-    res.json({
-        id: 1,
-        nombre: producto,
-        categoria:"Electrónica",
-        stock: 10,
-        precio: 500
-    });
-})
-
-//3
-app.get("/productos/:categoria/:id", (req,res) => {
-    const {categoria, id} = req.params;
-    res.json({
-          categoria,     
-          producto: id,
-          servidor: "Express"  
-  })
-})
-
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
 });
